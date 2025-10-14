@@ -33,7 +33,7 @@ public class SampleAopApplication implements CommandLineRunner {
     private Client client;
 
     public void run(String... args) {
-        client.run();
+        client.run(1);
     }
 
 	public static void main(String[] args) throws Exception {

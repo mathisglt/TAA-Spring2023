@@ -29,7 +29,7 @@ public class SampleSimpleApplication implements CommandLineRunner {
 	private IRun irun;
 
 	public void run(String... args) {
-		this.irun.run();
+		this.irun.run(1);
 	}
 
 	public static void main(String[] args) throws Exception {

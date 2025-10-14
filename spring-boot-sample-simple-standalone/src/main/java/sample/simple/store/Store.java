@@ -3,6 +3,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import sample.simple.bank.IBank;
 import sample.simple.provider.IProvider;
+import sample.simple.client.Client;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,14 +35,17 @@ public class Store implements IJustHaveALook, ILane, IFastLane {
     @Override
     public boolean oneShotOrder(String ref, int qty, String adresse, String accountNumber) {
         if (!isAvailable(ref, qty)) {
-            provider.order(ref, Math.max(10, qty));
+            int nbrOrder = Math.max(10,qty);
+            provider.order(ref, nbrOrder);
         }
+        System.out.println("Transfert bancaire en cours...");
+        ibank.transfert(new Client(), new Client(), (int) (qty * getPrice(ref)));
+
         stock.put(ref, stock.getOrDefault(ref,0) - qty);
         System.out.println("OneShotOrder : " + ref + " x" + qty);
         return true;
     }
 
-    /* ILane */
     private List<String> cart = new ArrayList<>();
     @Override
     public void addItemToCart(String ref, int qty) { cart.add(ref + ":" + qty); }
