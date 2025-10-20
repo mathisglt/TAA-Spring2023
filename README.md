@@ -32,6 +32,12 @@ Fonctionnalités :
 - Mapping DTO avec MapStruct
 - Aspect de logging pour les accès REST
 
+## TP4 - Keycloack
+
+Je ne vois pas comment transmettre et montré mon avancement concernant le Keycloack puisqu'il tourne sur le docker.
+J'ai essayé de l'intégrer au mieux dans ce projet, dans spring-boot-sample-data-jpa-standalone, fichier KeycloackConfig dans le dossier aspect.
+
+
 ## Lancement
 
 ```bash
