@@ -9,7 +9,6 @@ import sample.data.jpa.mapper.IUtilisateurMapper;
 import sample.data.jpa.repository.UtilisateurRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class UtilisateurController {
@@ -35,8 +34,11 @@ public class UtilisateurController {
 
     @RequestMapping("/utilisateurs")
     @ResponseBody
-    public List<Utilisateur> recupererTousLesUtilisateurs() {
-        return utilisateurRepository.findAll();
+    public List<UtilisateurDTO> recupererTousLesUtilisateurs() {
+        return utilisateurRepository.findAll()
+                .stream()
+                .map(IUtilisateurMapper.INSTANCE::toDto)
+                .toList();
     }
 
     @RequestMapping("/utilisateur")
