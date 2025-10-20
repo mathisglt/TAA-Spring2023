@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class SecurityAspect {
 
     private boolean isAuthorized() {
-        return Math.random() > 0.5; // 1 chance sur 2 d'être autorisé
+        return true ; // Pour faire simple j'ai fais en sorte qu'on est toujours autorisé sur cette partie du TP. 
     }
 
     @Around("execution(public * sample.data.jpa.service..*(..))")
